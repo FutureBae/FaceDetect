@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FacePass demo</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+    <script defer src="/static/app.js"></script>
+  </head>
+  <body>
+    <main class="card">
+      <header class="brand">
+        <div class="brand-mark" aria-hidden="true">F</div>
+        <div>
+          <p class="eyebrow">A simple demo</p>
+          <h1>FacePass</h1>
+        </div>
+      </header>
+
+      <p class="intro">Use your face to open your profile, or create one if this is your first visit.</p>
+      <p id="status" class="status" role="status">Loading face detection models…</p>
+
+      <section id="camera-section" class="camera-section">
+        <div class="camera-frame">
+          <video id="camera" autoplay muted playsinline></video>
+          <div class="camera-overlay" aria-hidden="true"><span></span></div>
+        </div>
+        <button id="start-camera" class="button button-secondary" type="button" disabled>Turn on camera</button>
+        <button id="scan-face" class="button button-primary" type="button" disabled>Recognise my face</button>
+      </section>
+
+      <form id="register-form" class="form-panel" hidden>
+        <h2>Let’s create your profile</h2>
+        <p>We didn’t find a match. Add your details to register this face.</p>
+        <label for="name">Name</label>
+        <input id="name" name="name" autocomplete="name" maxlength="80" required>
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="email" maxlength="254" required>
+        <button class="button button-primary" type="submit">Save profile</button>
+      </form>
+
+      <section id="profile-panel" class="profile-panel" hidden>
+        <div class="profile-icon" aria-hidden="true">✓</div>
+        <p class="eyebrow">Identity recognised</p>
+        <h2 id="profile-name"></h2>
+        <p id="profile-email" class="profile-email"></p>
+        <p class="success-note">You’re signed in to your demo profile.</p>
+        <button id="lock-profile" class="button button-secondary" type="button">Back to camera</button>
+      </section>
+
+      <footer>This demo stores face descriptors locally in <code>data/profiles.json</code>. It is not secure authentication.</footer>
+    </main>
+  </body>
+</html>
